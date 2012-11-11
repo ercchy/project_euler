@@ -30,7 +30,7 @@ class PrimeFactors:
 			# by bit masking we determine if n is even
 			return False
 
-		for i in range(3, n, 2):
+		for i in range(3, int(n**0.5)+1, 2):
 			if n % i == 0:
 				return False
 
@@ -46,9 +46,17 @@ class PrimeFactors:
 
 		"""	
 		ret_val = []
-		for i in range(2,n):
-			if n%i == 0 and sorted([i,n/i]) not in ret_val:			
+		list_len = 0
+		i = 2
+
+		while i**2 <= n:			
+			list_len = i				
+			i += 1		
+		
+		for i in range(2,list_len+1):			
+			if n%i == 0: 			
 				ret_val.append(sorted([i,n/i]))
+
 		return ret_val
 
 	
